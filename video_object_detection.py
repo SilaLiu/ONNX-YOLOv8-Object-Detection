@@ -2,6 +2,7 @@ import cv2
 from cap_from_youtube import cap_from_youtube
 
 from yolov8 import YOLOv8
+# from ultralytics import YOLO
 
 # # Initialize video
 # cap = cv2.VideoCapture("input.mp4")
@@ -16,6 +17,9 @@ cap.set(cv2.CAP_PROP_POS_FRAMES, start_time * cap.get(cv2.CAP_PROP_FPS))
 # Initialize YOLOv7 model
 model_path = "models/yolov8m.onnx"
 yolov8_detector = YOLOv8(model_path, conf_thres=0.5, iou_thres=0.5)
+
+# model = YOLO("yolov8m.pt") 
+# model.export(format="onnx", imgsz=[480,640])
 
 cv2.namedWindow("Detected Objects", cv2.WINDOW_NORMAL)
 while cap.isOpened():
